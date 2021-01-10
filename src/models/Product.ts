@@ -1,10 +1,12 @@
 import {sequelize} from "../database/database";
 import {INTEGER, STRING} from "sequelize";
+import {Category} from "./Category";
 
-export const Product = sequelize.define('products',{
+const Product = sequelize.define('products',{
     id:{
         type: INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     short_name:{
         type: STRING,
@@ -31,3 +33,6 @@ export const Product = sequelize.define('products',{
 }, {
     timestamps: false
 })
+Category.belongsTo(Product,{foreignKey:'category_id', targetKey:'id'})
+
+export default Product;

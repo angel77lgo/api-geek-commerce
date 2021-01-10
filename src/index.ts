@@ -1,5 +1,6 @@
 import express,{Application} from 'express';
 import morgan from 'morgan';
+import routes from "./routes/routes";
 
 const cors = require('cors');
 
@@ -9,6 +10,7 @@ class Server {
     constructor() {
         this.app = express();
         this.config();
+        this.routes();
     }
 
     config(): void{
@@ -19,7 +21,7 @@ class Server {
     }
 
     routes(): void {
-
+        this.app.use('/api',routes)
     }
 
     start(): void{

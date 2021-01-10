@@ -45,3 +45,12 @@ CREATE TABLE IF NOT EXISTS shopping_bags(
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+INSERT INTO users (username,password,role_type) VALUES ('admin','$2b$10$HOD0yubf2ymKpER8/JQhDuZh6kD5dfjW/yio7A2OKiDiUKZpRLCbC','admin');
+
+INSERT INTO categories (name) VALUES('Game');
+INSERT INTO categories (name) VALUES('Console');
+INSERT INTO categories (name) VALUES('Toy');
+INSERT INTO categories (name) VALUES('Gadget');
+INSERT INTO categories (name) VALUES('Other');
+
