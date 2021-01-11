@@ -14,7 +14,7 @@ class JWT {
     validate_token(req: any, res: Response, next: NextFunction) {
 
         if (!req.headers.authorization) {
-            res.status(403).json({
+            res.status(401).json({
                 "message": "Not Logged"
             })
         } else {
@@ -25,7 +25,7 @@ class JWT {
                 payload = jwt.verify(token, process.env.SECRET)
 
                 if (payload >= moment().unix()) {
-                    res.status(403).json({
+                    res.status(401).json({
                         "message": "Token expired"
                     })
                 }

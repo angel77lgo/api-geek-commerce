@@ -33,6 +33,8 @@ const Product = sequelize.define('products',{
 }, {
     timestamps: false
 })
-Category.belongsTo(Product,{foreignKey:'category_id', targetKey:'id'})
+// Product.belongsTo(Category)
+Product.belongsTo(Category,{foreignKey:'category_id'})
+Category.hasMany(Product, {foreignKey:'category_id'})
 
 export default Product;

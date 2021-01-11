@@ -19,6 +19,8 @@ class Routes {
         //Admin
         this.router.get("/admin/products",JWT.validate_token,AdminController.getProduct)
         this.router.post("/admin/products",JWT.validate_token,AdminController.addProduct)
+        this.router.put("/admin/products/:id",JWT.validate_token,AdminController.updateProduct)
+        this.router.delete("/admin/products/:id",JWT.validate_token, AdminController.deleteProduct)
     }
 }
 const routes = new Routes();

@@ -1,8 +1,13 @@
 import {Sequelize} from 'sequelize';
+require('dotenv').config()
 
-export const sequelize = new Sequelize('geek_commerce',
-    'postgres',
-    'postgres',
+const user = process.env.DB_USER;
+const database = process.env.DB_NAME;
+const password = process.env.DB_PASSWORD;
+// @ts-ignore
+export const sequelize = new Sequelize(database,
+    user,
+    password,
     {
         host: 'localhost',
         dialect: 'postgres',

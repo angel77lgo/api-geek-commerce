@@ -1,6 +1,10 @@
 import express,{Application} from 'express';
 import morgan from 'morgan';
 import routes from "./routes/routes";
+import {upload} from "./utils/UploadImages";
+import * as path from "path";
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger.json')
 
 const cors = require('cors');
 
@@ -18,6 +22,9 @@ class Server {
         this.app.use(morgan('dev'))
         this.app.use(express.json())
         this.app.use(cors())
+        this.app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
+        this.app.use(express.static(path.join(__dirname,'public')))
+        this.app.use(upload)
     }
 
     routes(): void {
