@@ -19,18 +19,16 @@ class JWT {
             })
         } else {
             let token = req.headers.authorization;
-            // console.log(token)
+            console.log("TOKEN", token)
             let payload;
             try {
                 payload = jwt.verify(token, process.env.SECRET)
 
-                if (payload >= moment().unix()) {
-                    res.status(401).json({
-                        "message": "Token expired"
-                    })
-                }
-
             } catch (e) {
+                res.status(500).json({
+                    "message":"Token Expired"
+                })
+                return;
             }
             req.current = payload;
             next();

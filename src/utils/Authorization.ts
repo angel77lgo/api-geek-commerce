@@ -6,7 +6,10 @@ class Authorization {
     isAdmin(req:any) {
 
         return req.role_type == "admin";
+    }
 
+    isClient(req:any){
+        return req.role_type == "client"
     }
 }
 export default new Authorization();
