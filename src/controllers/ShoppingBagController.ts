@@ -5,6 +5,7 @@ import Product from "../models/Product";
 import {ProductInterface} from "../interfaces/ProductInterface";
 import ShoppingBag from "../models/ShoppingBag";
 import Authorization from "../utils/Authorization";
+import {Category} from "../models/Category";
 
 class ShoppingBagController {
     async addToCart(req:any,res:Response){
@@ -86,14 +87,50 @@ class ShoppingBagController {
 
         let {id} = req.current
 
-        console.log(id)
-
-        let shopping_bag = await ShoppingBag.findAll({where:{user_id:id}, include:Product,attributes:["id","quantity"]})
+        let shopping_bag = await ShoppingBag.findAll({where:{user_id:id}, include:[Product],attributes:["id","quantity"]})
 
         res.status(200).json({
             "message":"Bag",
             "data":shopping_bag
         })
+
+    }
+
+    async emptyShoppingCart(req:any, res:Response){
+        if (!Authorization.isClient(req.current)) {
+            res.status(401).json({
+                "message": "Operation not valid"
+            })
+            return
+        }
+
+        let user_id = req.current.id;
+        console.log(user_id)
+
+        try {
+            await ShoppingBag.destroy({where:{user_id:user_id}})
+
+            res.status(200).json({
+                "message":"Cart Empty"
+            })
+
+        }catch (e){
+            console.log(e)
+            res.status(500).json({
+                "message":"Error"
+            })
+        }
+    }
+
+    async updateCart(req:any,res:Response){
+        if (!Authorization.isClient(req.current)) {
+            res.status(401).json({
+                "message": "Operation not valid"
+            })
+            return
+        }
+
+        res.json()
 
     }
 

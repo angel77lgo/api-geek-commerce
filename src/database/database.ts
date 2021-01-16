@@ -9,7 +9,7 @@ export const sequelize = new Sequelize(database,
     user,
     password,
     {
-        host: 'localhost',
+        host: 'database',
         dialect: 'postgres',
         pool: {
             max:5,

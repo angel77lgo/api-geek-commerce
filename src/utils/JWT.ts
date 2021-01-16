@@ -8,7 +8,7 @@ class JWT {
     create_token(data: any) {
         let secret = process.env.SECRET;
         data.password = ""
-        return jwt.sign(data, secret, {expiresIn: 60 * 60 * 24});
+        return jwt.sign(data, secret, {expiresIn: 60 * 60 * 48});
     }
 
     validate_token(req: any, res: Response, next: NextFunction) {
@@ -19,7 +19,7 @@ class JWT {
             })
         } else {
             let token = req.headers.authorization;
-            console.log("TOKEN", token)
+            // console.log("TOKEN", token)
             let payload;
             try {
                 payload = jwt.verify(token, process.env.SECRET)

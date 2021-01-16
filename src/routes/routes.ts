@@ -29,6 +29,8 @@ class Routes {
 
         this.router.post("/bag/add", JWT.validate_token, ShoppingBangController.addToCart)
         this.router.get("/bag",JWT.validate_token, ShoppingBangController.getShoppingBag)
+        this.router.post("/bag/clear",JWT.validate_token, ShoppingBangController.emptyShoppingCart)
+        this.router.put("/bag",JWT.validate_token, ShoppingBangController.updateCart)
 
         //Category
         this.router.get("/categories",CategoryController.getAll)

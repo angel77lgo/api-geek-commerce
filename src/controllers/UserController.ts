@@ -54,7 +54,6 @@ class UserController {
             console.log(match)
 
             if (match){
-
                 let token = JWT.create_token(user);
 
                 res.status(200).json({

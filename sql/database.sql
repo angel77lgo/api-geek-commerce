@@ -1,5 +1,3 @@
-USE geek_commerce;
-
 CREATE TYPE role AS ENUM ('admin','client');
 
 CREATE TABLE IF NOT EXISTS users (
@@ -54,3 +52,6 @@ INSERT INTO categories (name) VALUES('Toy');
 INSERT INTO categories (name) VALUES('Gadget');
 INSERT INTO categories (name) VALUES('Other');
 
+INSERT INTO products(short_name,description,price,quantity,brand,category_id) VALUES ('Wii U','The oldest Game',4000,50,'Nintendo',2),
+('FIFA 21','A Great Soccer Game',900,100,'EA Sports',1),('Mibo Samus','The Samus Aran Special Edition',599,5,'Nintendo',3),
+('Bioshock: The Complete Trilogy','Enjoy The Best Games Ever',999,10,'K2',1);

@@ -106,6 +106,27 @@
           }
         }
       }
+    },
+    "/bag": {
+      "get": {
+        "summary": "",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "type": "string",
+            "required": true,
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "401": {
+            "description": "No Auth"
+          }
+        }
+      }
     }
   },
   "schemes": ["http"],
