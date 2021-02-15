@@ -3,8 +3,11 @@ import morgan from 'morgan';
 import routes from "./routes/routes";
 import {upload} from "./utils/UploadImages";
 import * as path from "path";
+import fs from 'fs'
+const yaml = require('js-yaml')
+
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('../swagger.json')
+const swaggerDocument = yaml.load(fs.readFileSync("swagger.yaml","utf-8"))
 
 const cors = require('cors');
 
@@ -22,7 +25,7 @@ class Server {
         this.app.use(morgan('dev'))
         this.app.use(express.json())
         this.app.use(cors())
-        this.app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
+        this.app.use('/apidocs',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
         this.app.use(express.static(path.join(__dirname,'public')))
         this.app.use(upload)
     }

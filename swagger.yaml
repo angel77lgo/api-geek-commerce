@@ -1,0 +1,13 @@
+openapi: 3.0.1
+info:
+  title: API Geek Documentation
+  description: The Api Documentation
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api
+paths:
+
+components: {}
